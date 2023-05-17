@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+
+.navContainer{
+    font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+        background-color: #1a1a1a;
+        padding: 1.7%;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+}
+.navItem{
+    color: grey;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navItem:hover {
+    color: gold;
+  }
+  
+
+body{
+    background-color: #000;
+}
