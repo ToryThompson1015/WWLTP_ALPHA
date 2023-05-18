@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Carousel } from 'react-responsive-carousel';
+
 const FeaturedVideos = () => {
   // Dummy data for featured videos
   const featuredVideos = [
@@ -49,11 +51,27 @@ const FeaturedVideos = () => {
   ];
 
   return (
+
+    
     <div className="featuredVideosContainer">
       <h2 className="featuredVideosTitle">Featured Videos</h2>
-      <div className="featuredVideosList">
+
+      {/* carousel options */}
+      <Carousel
+      className="featuredVideosList"
+      showArrows
+      autoPlay
+      infiniteLoop
+      interval={2000}
+      showStatus={false}
+      showThumbs={false}
+      showIndicators={false}
+      centerMode
+      centerSlidePercentage={33}
+    >
         {featuredVideos.map((video) => (
-          <div key={video.id} className="featuredVideoItem">
+          <div key={video.id} className='carousel-item'>
+          <div className="featuredVideoItem">
             <div className="videoThumbnailOverlay">
               <div className="playButton"></div>
             </div>
@@ -62,9 +80,10 @@ const FeaturedVideos = () => {
               <h3 className="videoTitle">{video.title}</h3>
             </div>
           </div>
+          </div>
         ))}
+        </Carousel>
       </div>
-    </div>
   );
 };
 
