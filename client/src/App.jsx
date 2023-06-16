@@ -7,6 +7,7 @@ import LiveStream from './components/Livestream'
 import FeaturedVideos from './components/Featuredvideos'
 
 
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -14,6 +15,7 @@ function App() {
     <>
       <div>
      <NavBar/>
+  
      <LiveStream/>
      <FeaturedVideos/>
    

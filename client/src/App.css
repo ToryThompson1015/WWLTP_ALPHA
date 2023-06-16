@@ -6,11 +6,15 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 24px;
   background-color: #1a1a1a;
-  padding: .5%;
+  padding: .3%;
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 99.5vw;
+}
+.logoWords{
+    
 }
 
 .navItem {
@@ -86,7 +90,7 @@ body {
 
 .liveStreamContainer{
     width: 100vw;
-    height: 50vh;
+    height: 75vh;
     border: white 1px solid;
 }
 .liveStream {
