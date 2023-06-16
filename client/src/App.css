@@ -90,13 +90,43 @@ body {
 
 .liveStreamContainer{
     width: 100vw;
-    height: 75vh;
+    height: 60vh;
     border: white 1px solid;
+    position: relative;
 }
 .liveStream {
     width: 100%;
     height: 100%;
   }
+  
+  .liveStreamImage{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 1;
+ 
+  }
+  .liveStreamContainer:hover .liveStream{
+    opacity: 1;
+ 
+  }
+  .liveStream {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    opacity: .0;
+    transition: opacity 0.3s ease;
+  }
+  
+  
+  
+  
+  
+  
+  
 
   /* Featured Videos */
 
