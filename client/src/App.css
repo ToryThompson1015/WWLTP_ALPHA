@@ -1,20 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=BebasNeue&display=swap');
-*{
-    font-family: 'Bebas Neue', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=BebasNeue&display=swap");
+
+* {
+  font-family: "Bebas Neue", sans-serif;
+  box-sizing: border-box;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
 .navContainer {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 24px;
   background-color: #1a1a1a;
-  padding: .3%;
+  padding: 0.3%;
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 99.5vw;
-}
-.logoWords{
-    
+  width: 100%;
 }
 
 .navItem {
@@ -88,98 +94,105 @@ body {
 
 /* Livestream Container */
 
-.liveStreamContainer{
-    width: 100vw;
-    height: 75vh;
-    border: white 1px solid;
+.liveStreamContainer {
+  width: 100%;
+  height: 75vh;
+  border: white 1px solid;
 }
 .liveStream {
-    width: 100%;
-    height: 100%;
-  }
+  width: 100%;
+  height: 100%;
+}
 
-  /* Featured Videos */
+/* Featured Videos */
 
-  .featuredVideosContainer {
-    margin-top: 20px;
-  }
-  
-  .featuredVideosTitle {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: .5%;
-    margin-top: .5%;
-    text-align: left;
-    height: 5vh;
-    color: #fff;
-  }
-  
-  .featuredVideosList {
-    display: flex;
- 
-    overflow-x: auto;
-    height: 50vh;
-   width: 100vw;
-    border: #fff 1px solid;
-  }
-  
-  .featuredVideoItem {
-    flex: 0 0  auto;
-    
-    width: 300px;
-    margin: 10px;
-    overflow-x: scroll;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(227, 220, 220, 0.961);
-    transition: transform 0.3s ease;
-  }
-  
-  .featuredVideoItem:hover {
-    transform: translateY(-5px);
-  }
-  
-  .videoThumbnailOverlay {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .featuredVideoItem:hover .videoThumbnailOverlay {
-    opacity: 1;
-  }
-  
-  .playButton {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .videoThumbnail {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 5px;
-  }
-  
-  .videoContent {
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .videoTitle {
-    font-size: 18px;
-    margin-top: 10px;
-    color: #fff;
-  }
-  
- 
+.featuredVideosContainer {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.featuredVideosTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 0.5%;
+  margin-top: 0.5%;
+  padding: 0px 40px;
+  text-align: left;
+  height: 5vh;
+  color: #fff;
+}
+
+.featuredVideosTitle a {
+  color: rgb(139, 139, 197);
+  background-color: rgba(128, 128, 128, 0.237);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.featuredVideosList {
+  display: flex;
+
+  overflow-x: auto;
+  width: 100vw;
+  height: 400px;
+}
+
+.featuredVideosList img {
+  height: 100%;
+}
+
+.featuredVideoItem {
+  display: flex;
+  padding: 5px;
+  height: 100%;
+}
+
+.featuredVideoItem:hover {
+  transform: translateY(-5px);
+}
+
+.videoThumbnailOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.featuredVideoItem:hover .videoThumbnailOverlay {
+  opacity: 1;
+}
+
+.playButton {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.videoThumbnail {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.videoContent {
+  padding: 10px;
+  text-align: center;
+}
+
+.videoTitle {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #fff;
+}
