@@ -27,8 +27,8 @@ export default (props) => {
   };
 
   return (
-    <div className='featuredVideosContainer'>
-      <h2 className='featuredVideosTitle'>
+    <div className='w-full mt-5'>
+      <h2>
         <>{props.title}</>
         <a>View More</a>
       </h2>
@@ -50,18 +50,11 @@ export default (props) => {
         itemClass='carousel-item-padding-40-px'
       >
         {props.videos.map((video) => (
-          <div key={video.id + video.title} className='featuredVideoItem'>
-            <div className='videoThumbnailOverlay'>
+          <div key={video.id + video.title} className='flex px-1 h-full'>
+            <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center opacity-30 hover:opacity-90 transition-opacity duration-300'>
               <div className='playButton'></div>
             </div>
-            <img
-              src={video.thumbnail}
-              alt={video.title}
-              className='videoThumbnail'
-            />
-            <div className='videoContent'>
-              <h3 className='videoTitle'>{video.title}</h3>
-            </div>
+            <img src={video.thumbnail} alt={video.title} />
           </div>
         ))}
       </Carousel>

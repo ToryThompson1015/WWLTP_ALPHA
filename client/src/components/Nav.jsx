@@ -1,41 +1,34 @@
 import React from "react";
+import LinkItem from "./LinkItem";
 
-const NavBar = () => {
+const NavBar = ({ onLogin }) => {
   return (
-    <nav className='navContainer'>
+    <nav className='navContainer bg-black text-yellow-300 border-b border-yellow-500 flex justify-between items-center px-8 py-4'>
       <div className='logoWords'>WWLTP</div>
-      <a className='navItem' href='/'>
-        Watch
-      </a>
-      <a className='navItem' href='/login'>
-        Login
-      </a>
-      <a className='navItem' href='/calendar'>
-        Calendar
-      </a>
-      <div className='dropdown navItem'>
+      <LinkItem text='Watch' to='#' />
+      <LinkItem text='Login' to='#' onClick={onLogin} />
+      <LinkItem text='Calender' to='#' />
+      <div className='dropdown navItem relative'>
         <p className='dropdown-toggle'>Filter By ▼</p>
-        <ul className='dropdown-menu'>
-          <li>
+        <ul className='dropdown-menu hidden absolute bg-green-900 p-2 list-none m-0'>
+          <li className='text-white no-underline text-base hover:text-pink-500'>
             <a href='/filter-by/item1'>Genres</a>
           </li>
           <hr className='dropdown-divider' /> {/* Horizontal bar */}
-          <li>
+          <li className='text-white no-underline text-base hover:text-pink-500'>
             <a href='/filter-by/item2'>Player Ranking</a>
           </li>
           <hr className='dropdown-divider' /> {/* Horizontal bar */}
-          <li>
+          <li className='text-white no-underline text-base hover:text-pink-500'>
             <a href='/filter-by/item3'>Country</a>
           </li>
           <hr className='dropdown-divider' /> {/* Horizontal bar */}
-          <li>
+          <li className='text-white no-underline text-base hover:text-pink-500'>
             <a href='/filter-by/item3'>Platform</a>
           </li>
         </ul>
       </div>
-      <a className='navItem' href='/settings'>
-        Settings
-      </a>
+      <LinkItem text='Settings' to='#' />
     </nav>
   );
 };

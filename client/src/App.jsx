@@ -1,25 +1,25 @@
 import { useState } from "react";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import "./components/Nav";
-import NavBar from "./components/Nav";
-import LiveStream from "./components/Livestream";
-import FeaturedVideos from "./components/featured/Featuredvideos";
-import TestVideos1 from "./components/featured//TestVideos1";
-import TestVideos2 from "./components/featured//TestVideos2";
+import Main from "./pages/Main";
+import Register from "./pages/Register";
+import LoginModal from "./components/LoginModal";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isLoginOpen, setLoginOpen] = useState(false);
+
+  const handleLogin = () => {
+    setLoginOpen(true);
+  };
 
   return (
-    <div className='app'>
-      <NavBar />
-
-      <LiveStream />
-      <FeaturedVideos />
-      <TestVideos1 />
-      <TestVideos2 />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Main onLogin={handleLogin} />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
+      <LoginModal isOpen={isLoginOpen} onClose={() => setLoginOpen(false)} />
+    </Router>
   );
 }
 
