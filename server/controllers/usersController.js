@@ -6,6 +6,17 @@ exports.getUsers = async (req, res) => {
   res.json(users);
 };
 
+exports.createUser = async (req, res) => {
+  const { email, password } = req.body;
+  console.log(email, password);
+  await User.create({
+    email,
+    password,
+  });
+
+  res.send({ status: "ok" });
+};
+
 exports.seedUsers = async (req, res) => {
   const users = Array.from({ length: 10 }, () => ({
     name: faker.person.fullName(),

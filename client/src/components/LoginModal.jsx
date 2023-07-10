@@ -2,7 +2,20 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import { XIcon } from "@heroicons/react/solid";
 
+import { useRef, useState, useEffect, useContext } from "react";
+
 function LoginModal({ isOpen, onClose }) {
+  const userRef = useRef();
+  const errRef = useRef();
+
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(user, pass);
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -18,21 +31,31 @@ function LoginModal({ isOpen, onClose }) {
           onClick={onClose}
         />
         <h2 className='text-white text-lg mb-6'>Login Form</h2>
-        <form>
+
+        {/* FORM CODE */}
+        <form onSubmit={handleSubmit}>
           <label className='block mb-4'>
             <span className='text-white'>Email</span>
             <input
               type='email'
+              id='email'
               className='mt-1 p-2 bg-gray-700 rounded w-full text-white'
               placeholder='Enter your email'
+              onChange={(e) => setUser(e.target.value)}
+              value={user}
+              required
             />
           </label>
           <label className='block mb-6'>
             <span className='text-white'>Password</span>
             <input
               type='password'
+              id='password'
               className='mt-1 p-2 bg-gray-700 rounded w-full text-white'
               placeholder='Enter your password'
+              onChange={(e) => setPass(e.target.value)}
+              value={pass}
+              required
             />
           </label>
           <button
@@ -42,6 +65,8 @@ function LoginModal({ isOpen, onClose }) {
             Login
           </button>
         </form>
+
+        {/* END FORM */}
         <p className='text-white text-center mt-4'>
           Don't have an account?
           <br />
