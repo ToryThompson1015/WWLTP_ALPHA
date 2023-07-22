@@ -2,7 +2,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-multi-carousel/lib/styles.css";
 
 import React from "react";
-
 import Carousel from "react-multi-carousel";
 
 export default (props) => {
@@ -26,14 +25,25 @@ export default (props) => {
     },
   };
 
+  const styles = {
+    mainDiv: "w-full mt-5",
+    titleDiv: "flex justify-between px-5",
+    title: "text-xl",
+    link: "text-xl",
+    videoContainer: "flex flex-col w-full h-full justify-center",
+    overlay:
+      "absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center opacity-0 hover:opacity-90 transition-opacity duration-300",
+    playButton: "playButton absolute",
+  };
+
   return (
-    <div className='w-full mt-5'>
-      <h2>
-        <>{props.title}</>
-        <a>View More</a>
-      </h2>
+    <div className={styles.mainDiv}>
+      <div className={styles.titleDiv}>
+        <h1 className={styles.title}>{props.title}</h1>
+        <a className={styles.link}>View More</a>
+      </div>
       <Carousel
-        className='featuredVideosList '
+        className="featuredVideosList"
         swipeable={false}
         draggable={false}
         showDots={true}
@@ -42,17 +52,17 @@ export default (props) => {
         autoPlay={false}
         autoPlaySpeed={1000}
         keyBoardControl={true}
-        customTransition='all .5'
+        customTransition="all .5"
         transitionDuration={500}
-        containerClass='carousel-container'
+        containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
-        dotListClass='custom-dot-list-style'
-        itemClass='carousel-item-padding-40-px'
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
       >
         {props.videos.map((video) => (
-          <div key={video.id + video.title} className='flex px-1 h-full'>
-            <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center opacity-30 hover:opacity-90 transition-opacity duration-300'>
-              <div className='playButton'></div>
+          <div key={video.id + video.title} className={styles.videoContainer}>
+            <div className={styles.overlay}>
+              <div className={styles.playButton}>( PLAY )</div>
             </div>
             <img src={video.thumbnail} alt={video.title} />
           </div>

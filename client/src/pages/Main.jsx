@@ -1,16 +1,14 @@
 import { useState } from "react";
-import NavBar from "../components/Nav";
+import NavBar from "../components/navigation/Nav";
 import LiveStream from "../components/Livestream";
 import FeaturedVideos from "../components/featured/Featuredvideos";
 import TestVideos1 from "../components/featured/TestVideos1";
 import TestVideos2 from "../components/featured/TestVideos2";
 
-function Main({ onLogin }) {
-  const [count, setCount] = useState(0);
-
+function Main() {
   return (
-    <div className='flex flex-col w-screen bg-black text-white'>
-      <NavBar onLogin={onLogin} />
+    <div className="flex flex-col w-screen bg-black text-white">
+      <NavBar />
       <LiveStream />
       <FeaturedVideos />
       <TestVideos1 />
