@@ -19,7 +19,7 @@ const NavBar = () => {
     dropdownToggle: "text-white cursor-pointer",
     dropdownMenu: `${
       isDropdownOpen ? "flex" : "hidden"
-    } absolute bg-black p-2 list-none m-0 z-50 w-full`,
+    } absolute bg-black p-2 list-none m-0 z-50 w-full border-b border-yellow-200 border-opacity-50`,
     dropdownItem: "mr-4",
     dropdownDivider: "dropdown-divider",
     link: "text-white no-underline text-base hover:text-pink-500",
