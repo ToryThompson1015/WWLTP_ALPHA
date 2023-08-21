@@ -5,41 +5,22 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    match: [/\S+@\S+\.\S+/, "Please use a valid email address."],
   },
-  password: {
-    type: String,
-    required: true,
-  },
-
-  // Strictly for UX/UI preferences
-  preferences: {
-    type: [
-      {
-        type: String,
-      },
-    ],
-    required: true,
-  },
+  password: { type: String, required: true },
+  preferences: [{ type: String, required: true }],
   profile: {
-    userName: { type: String, required: true },
-    favoriteGenre: { type: [{ type: String }] },
-
-    //Links to the ID of each of the users favorite author
-    //Placeholder for now
-    favoriteAuthors: { type: [{ type: Number }] },
-    // TODO: Figure out what to do here
-    socials: {},
+    userName: { type: String, required: true, default: "DefaultUserName" },
+    favoriteGenre: [{ type: String }],
+    favoriteAuthors: [{ type: mongoose.Schema.Types.ObjectId }],
   },
   accountDetails: {
-    //Will be populated by default values
-    paidUser: { type: Boolean, required: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    region: { type: String, required: true },
-    phoneNumber: { type: Number, required: true },
-    parentalControls: { type: Boolean, required: true },
-    paymentMethods: { type: [{ type: Object }] },
-    transactionHistory: { type: [{ type: Object }] },
+    paidUser: { type: Boolean, required: true, default: false },
+    firstName: { type: String, required: true, default: "FirstName" },
+    lastName: { type: String, required: true, default: "LastName" },
+    region: { type: String, required: true, default: "DefaultRegion" },
+    phoneNumber: { type: String, required: true, default: "1234567890" },
+    parentalControls: { type: Boolean, required: true, default: false },
   },
 });
 

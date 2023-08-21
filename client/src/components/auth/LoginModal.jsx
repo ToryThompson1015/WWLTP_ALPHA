@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import { XIcon } from "@heroicons/react/solid";
+import { loginUser } from "../../api";
 
 import { useRef, useState } from "react";
 
@@ -11,11 +12,32 @@ function LoginModal({ isOpen, onClose }) {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
 
+  const [error, setError] = useState(""); // State to capture error messages
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user, pass);
-  };
+    console.log("handling");
+    try {
+      console.log("ok");
+      const response = await loginUser(user, pass);
+      console.log(response); // Log the entire response object
+      const data = response.data;
+      console.log(data);
 
+      if (data && data.error) {
+        setError(data.error); // Handle any error messages from backend
+      } else {
+        // Store the user data/token in local storage or context
+        localStorage.setItem("user", JSON.stringify(data.user));
+        onClose(); // Close the modal if login was successful
+        window.location.reload(); // Refresh on successful login
+        // You may want to redirect the user or update the app state to reflect the login
+      }
+    } catch (err) {
+      console.log(err);
+      setError("An error occurred during login.");
+    }
+  };
   const styles = {
     modal: "fixed inset-0",
     container:
@@ -26,6 +48,7 @@ function LoginModal({ isOpen, onClose }) {
     btn:
       "w-full py-2 px-4 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-600",
     link: "text-yellow-700 hover:text-yellow-900",
+    errorText: "text-yellow-500",
   };
 
   const modalStyle = {
@@ -36,6 +59,9 @@ function LoginModal({ isOpen, onClose }) {
       alignItems: "center",
       justifyContent: "center",
       background: "transparent",
+      border: "none", // Add this line to remove the border
+      boxShadow: "none", // Add this line to remove the shadow
+      padding: 0, // Remove padding if necessary
     },
     overlay: {
       position: "fixed",
@@ -48,23 +74,22 @@ function LoginModal({ isOpen, onClose }) {
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
-      contentLabel="Login Modal"
+      contentLabel='Login Modal'
       style={modalStyle}
       overlayClassName={styles.modal}
     >
       <div className={styles.container}>
         <XIcon className={styles.closeBtn} onClick={onClose} />
         <h2 className={styles.heading}>Login Form</h2>
-
         {/* FORM CODE */}
         <form onSubmit={handleSubmit}>
           <label className={styles.heading}>
             <span>Email</span>
             <input
-              type="email"
-              id="email"
+              type='email'
+              id='email'
               className={styles.input}
-              placeholder="Enter your email"
+              placeholder='Enter your email'
               onChange={(e) => setUser(e.target.value)}
               value={user}
               required
@@ -73,31 +98,31 @@ function LoginModal({ isOpen, onClose }) {
           <label className={styles.heading}>
             <span>Password</span>
             <input
-              type="password"
-              id="password"
+              type='password'
+              id='password'
               className={styles.input}
-              placeholder="Enter your password"
+              placeholder='Enter your password'
               onChange={(e) => setPass(e.target.value)}
               value={pass}
               required
             />
           </label>
-          <button type="submit" className={styles.btn}>
+          <button type='submit' className={styles.btn}>
             Login
           </button>
         </form>
         {/* END FORM */}
-
         <p
           className={styles.heading}
           style={{ textAlign: "center", marginTop: 4 }}
         >
           Don't have an account?
           <br />
-          <Link to="/register" className={styles.link} onClick={onClose}>
+          <Link to='/register' className={styles.link} onClick={onClose}>
             Sign Up
           </Link>
         </p>
+        {error && <p className={styles.errorText}>{error}</p>}
       </div>
     </Modal>
   );
